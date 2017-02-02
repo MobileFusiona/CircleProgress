@@ -397,11 +397,22 @@ public class DonutProgress extends View {
                 canvas.drawText(text, (getWidth() - textPaint.measureText(text)) / 2.0f, (getWidth() - textHeight) / 2.0f, textPaint);
             }
 
+            /* Original code
             if (!TextUtils.isEmpty(getInnerBottomText())) {
                 innerBottomTextPaint.setTextSize(innerBottomTextSize);
                 float bottomTextBaseline = getHeight() - innerBottomTextHeight - (textPaint.descent() + textPaint.ascent()) / 2;
                 canvas.drawText(getInnerBottomText(), (getWidth() - innerBottomTextPaint.measureText(getInnerBottomText())) / 2.0f, bottomTextBaseline, innerBottomTextPaint);
+            }*/
+
+            //Puts the text inner bottom below from the center text
+            if (!TextUtils.isEmpty(getInnerBottomText())) {
+                innerBottomTextPaint.setTextSize(innerBottomTextSize);
+                float bottomTextBaseline = getHeight() - innerBottomTextHeight - (textPaint.descent() + textPaint.ascent()) / 2;
+                float textHeight = innerBottomTextPaint.descent() + innerBottomTextPaint.ascent();
+                float previousText = textPaint.descent() + textPaint.ascent() + 5;
+                canvas.drawText(getInnerBottomText(), (getWidth() - innerBottomTextPaint.measureText(getInnerBottomText())) / 2.0f, ((getWidth() - textHeight) / 2.0f) - textHeight - previousText, innerBottomTextPaint);
             }
+
         }
 
         if (attributeResourceId != 0) {
