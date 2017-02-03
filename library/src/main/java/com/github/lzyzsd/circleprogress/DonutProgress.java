@@ -394,7 +394,7 @@ public class DonutProgress extends View {
             String text = this.text != null ? this.text : prefixText + progress + suffixText;
             if (!TextUtils.isEmpty(text)) {
                 float textHeight = textPaint.descent() + textPaint.ascent();
-                canvas.drawText(text, (getWidth() - textPaint.measureText(text)) / 2.0f, (getWidth() - textHeight) / 2.0f, textPaint);
+                canvas.drawText(text, (getWidth() - textPaint.measureText(text)) / 2.0f, (getWidth() / 2.0f), textPaint);
             }
 
             /* Original code
@@ -410,7 +410,7 @@ public class DonutProgress extends View {
                 float bottomTextBaseline = getHeight() - innerBottomTextHeight - (textPaint.descent() + textPaint.ascent()) / 2;
                 float textHeight = innerBottomTextPaint.descent() + innerBottomTextPaint.ascent();
                 float previousText = textPaint.descent() + textPaint.ascent() + 5;
-                canvas.drawText(getInnerBottomText(), (getWidth() - innerBottomTextPaint.measureText(getInnerBottomText())) / 2.0f, ((getWidth() - textHeight) / 2.0f) - textHeight - previousText, innerBottomTextPaint);
+                canvas.drawText(getInnerBottomText(), (getWidth() - innerBottomTextPaint.measureText(getInnerBottomText())) / 2.0f, ((getWidth()) / 2.0f) - textHeight - previousText, innerBottomTextPaint);
             }
 
         }
